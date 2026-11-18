@@ -102,7 +102,7 @@ export const MPESA_TARIFF_BANDS: MpesaTariffBand[] = [
   { min: 5001, max: 7500, transferMpesa: 78, transferOtherNetworks: 78, agentWithdrawal: 87, atmWithdrawal: 115 },
   { min: 7501, max: 10000, transferMpesa: 90, transferOtherNetworks: 90, agentWithdrawal: 115, atmWithdrawal: 115 },
   { min: 10001, max: 15000, transferMpesa: 100, transferOtherNetworks: 100, agentWithdrawal: 167, atmWithdrawal: 203 },
-  { min: 1501, max: 20000, transferMpesa: 105, transferOtherNetworks: 105, agentWithdrawal: 185, atmWithdrawal: 203 },
+  { min: 15001, max: 20000, transferMpesa: 105, transferOtherNetworks: 105, agentWithdrawal: 185, atmWithdrawal: 203 },
   { min: 20001, max: 35000, transferMpesa: 108, transferOtherNetworks: 108, agentWithdrawal: 197, atmWithdrawal: 203 },
   { min: 35001, max: 50000, transferMpesa: 108, transferOtherNetworks: 108, agentWithdrawal: 278, atmWithdrawal: null },
   { min: 50001, max: 250000, transferMpesa: 108, transferOtherNetworks: 108, agentWithdrawal: 309, atmWithdrawal: null },
