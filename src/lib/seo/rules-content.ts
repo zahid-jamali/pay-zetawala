@@ -71,6 +71,9 @@ export interface PhRatesSummary {
   taxExemptAnnual: number;
   taxExemptMonthly: number;
   thirteenthMonthTaxExemptLimit: number;
+  taxExempt13thCeiling: number;
+  philhealthFloor: number;
+  philhealthCeiling: number;
   sssPensionBonus: number;
   verifiedYear: number;
   verifiedDate: string;
@@ -90,6 +93,8 @@ export function getPhRates(): PhRatesSummary {
     philhealthErRate: philRate / 2, // 50% employer share
     philhealthIncomeFloor: PHILHEALTH_INCOME_FLOOR.value,
     philhealthIncomeCeiling: PHILHEALTH_INCOME_CEILING.value,
+    philhealthFloor: PHILHEALTH_INCOME_FLOOR.value,
+    philhealthCeiling: PHILHEALTH_INCOME_CEILING.value,
     philhealthMinPremium: PHILHEALTH_INCOME_FLOOR.value * (philRate / 100),
     philhealthMaxPremium: PHILHEALTH_INCOME_CEILING.value * (philRate / 100),
     pagibigEeRate: 2.0, // 2% above ₱1,500
@@ -100,6 +105,7 @@ export function getPhRates(): PhRatesSummary {
     taxExemptAnnual: 250000,
     taxExemptMonthly: BIR_MONTHLY_TAX_BRACKETS[0].maxComp,
     thirteenthMonthTaxExemptLimit: TAX_EXEMPT_13TH_MONTH_CEILING.value,
+    taxExempt13thCeiling: TAX_EXEMPT_13TH_MONTH_CEILING.value,
     sssPensionBonus: SSS_PENSION_ADDITIONAL_BENEFIT.value,
     verifiedYear: 2026,
     verifiedDate: SSS_TOTAL_RATE.verifiedOn,
@@ -138,9 +144,12 @@ export function getKeRates(): KeRatesSummary {
 
 export interface UgRatesSummary {
   withdrawTaxRate: number;
+  withdrawalTaxRate: number;
   maxSingleTxn: number;
+  momoMaxSingleTxn: number;
   maxDailyLimit: number;
   maxBalance: number;
+  momoMaxBalance: number;
   mtnBandsCount: number;
   airtelBandsCount: number;
   verifiedYear: number;
@@ -150,9 +159,12 @@ export interface UgRatesSummary {
 export function getUgRates(): UgRatesSummary {
   return {
     withdrawTaxRate: UG_WITHDRAWAL_TAX_RATE.value,
+    withdrawalTaxRate: UG_WITHDRAWAL_TAX_RATE.value,
     maxSingleTxn: UG_MOMO_MAX_SINGLE_TXN.value,
+    momoMaxSingleTxn: UG_MOMO_MAX_SINGLE_TXN.value,
     maxDailyLimit: 10000000,
     maxBalance: UG_MOMO_MAX_BALANCE.value,
+    momoMaxBalance: UG_MOMO_MAX_BALANCE.value,
     mtnBandsCount: MTN_UG_TARIFF_BANDS.length,
     airtelBandsCount: AIRTEL_UG_TARIFF_BANDS.length,
     verifiedYear: 2026,
