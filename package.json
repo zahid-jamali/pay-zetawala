@@ -10,6 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "og": "tsx scripts/make-og.ts",
+    "indexnow": "node scripts/indexnow.mjs",
+    "audit": "node scripts/check-site.mjs",
     "extract-palette": "node scripts/extract-palette.mjs"
   },
   "dependencies": {
