@@ -9,6 +9,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
+    "og": "tsx scripts/make-og.ts",
     "extract-palette": "node scripts/extract-palette.mjs"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
     "postcss": "^8.5.1",
     "prettier": "^3.4.2",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.23.15",
     "typescript": "^5.7.3",
     "vitest": "^3.0.4"
   }
