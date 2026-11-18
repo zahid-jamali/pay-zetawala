@@ -1,16 +1,8 @@
 import type { Metadata } from 'next';
-import { IBM_Plex_Sans } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-
-const ibmPlexSans = IBM_Plex_Sans({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-ibm-plex-sans',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pay.zetawala.com'),
@@ -61,7 +53,7 @@ export default function RootLayout({
   const cfAnalyticsToken = process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN;
 
   return (
-    <html lang="en" className={ibmPlexSans.variable}>
+    <html lang="en">
       <head>
         {siteWideSchema.map((schema, idx) => (
           <script

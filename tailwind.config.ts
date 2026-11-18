@@ -81,7 +81,7 @@ const config: Config = {
         lg: 'var(--radius-lg)',
       },
       fontFamily: {
-        sans: ['var(--font-ibm-plex-sans)', 'system-ui', 'sans-serif'],
+        sans: ['"IBM Plex Sans"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
       },
     },
   },

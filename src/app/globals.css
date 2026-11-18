@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 @import '../styles/tokens.css';
 
 @tailwind base;
@@ -6,7 +7,7 @@
 
 @layer base {
   html {
-    font-family: var(--font-ibm-plex-sans), system-ui, -apple-system, sans-serif;
+    font-family: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     color: var(--text-primary);
     background-color: var(--bg-page);
     line-height: 1.5;
