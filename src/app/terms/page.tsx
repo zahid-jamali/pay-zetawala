@@ -1,13 +1,6 @@
 import React from 'react';
-import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { siteConfig } from '@/config/site';
-
-export const metadata: Metadata = {
-  title: 'Terms of Use & Disclaimer | Pay',
-  description:
-    'Terms of Use and financial disclaimer for Pay calculators. Computational tools provided free of charge for informational purposes.',
-};
 
 export default function TermsPage() {
   return (

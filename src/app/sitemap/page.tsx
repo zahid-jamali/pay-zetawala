@@ -1,15 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { Metadata } from 'next';
 import { PAGES, CountryCode } from '@/config/pages';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { ArrowRight, Globe } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: 'HTML Sitemap — Complete Directory of Calculators | Pay',
-  description:
-    'Complete directory of all 26 salary, mobile money, and tertiary grade calculators available on Pay for Philippines, Kenya, Uganda, and Nigeria.',
-};
+import { ArrowRight } from 'lucide-react';
 
 export default function HtmlSitemapPage() {
   const countries: { code: CountryCode; name: string; flag: string }[] = [

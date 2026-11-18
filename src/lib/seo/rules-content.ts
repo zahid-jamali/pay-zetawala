@@ -51,20 +51,28 @@ import {
 
 export interface PhRatesSummary {
   sssTotalRate: number;
+  sssTotalRatePercent: number;
   sssEeRate: number;
+  sssEeRatePercent: number;
   sssErRate: number;
+  sssErRatePercent: number;
   sssMinMsc: number;
   sssRegularMscCap: number;
   sssMaxTotalMsc: number;
   philhealthTotalRate: number;
+  philhealthTotalRatePercent: number;
   philhealthEeRate: number;
+  philhealthEeRatePercent: number;
   philhealthErRate: number;
+  philhealthErRatePercent: number;
   philhealthIncomeFloor: number;
   philhealthIncomeCeiling: number;
   philhealthMinPremium: number;
   philhealthMaxPremium: number;
   pagibigEeRate: number;
+  pagibigEeRatePercent: number;
   pagibigErRate: number;
+  pagibigErRatePercent: number;
   pagibigMaxMfs: number;
   pagibigMaxEeContribution: number;
   pagibigMaxErContribution: number;
@@ -82,15 +90,21 @@ export interface PhRatesSummary {
 export function getPhRates(): PhRatesSummary {
   const philRate = PHILHEALTH_PREMIUM_RATE.value;
   return {
-    sssTotalRate: SSS_TOTAL_RATE.value,
-    sssEeRate: SSS_EE_RATE.value,
-    sssErRate: SSS_ER_RATE.value,
+    sssTotalRate: SSS_TOTAL_RATE.value / 100,
+    sssTotalRatePercent: SSS_TOTAL_RATE.value,
+    sssEeRate: SSS_EE_RATE.value / 100,
+    sssEeRatePercent: SSS_EE_RATE.value,
+    sssErRate: SSS_ER_RATE.value / 100,
+    sssErRatePercent: SSS_ER_RATE.value,
     sssMinMsc: SSS_MIN_MSC.value,
     sssRegularMscCap: SSS_REGULAR_MSC_CAP.value,
     sssMaxTotalMsc: SSS_MAX_MSC.value,
     philhealthTotalRate: philRate,
+    philhealthTotalRatePercent: philRate,
     philhealthEeRate: philRate / 2, // 50% employee share
+    philhealthEeRatePercent: philRate / 2,
     philhealthErRate: philRate / 2, // 50% employer share
+    philhealthErRatePercent: philRate / 2,
     philhealthIncomeFloor: PHILHEALTH_INCOME_FLOOR.value,
     philhealthIncomeCeiling: PHILHEALTH_INCOME_CEILING.value,
     philhealthFloor: PHILHEALTH_INCOME_FLOOR.value,
@@ -98,7 +112,9 @@ export function getPhRates(): PhRatesSummary {
     philhealthMinPremium: PHILHEALTH_INCOME_FLOOR.value * (philRate / 100),
     philhealthMaxPremium: PHILHEALTH_INCOME_CEILING.value * (philRate / 100),
     pagibigEeRate: 2.0, // 2% above ₱1,500
+    pagibigEeRatePercent: 2.0,
     pagibigErRate: 2.0,
+    pagibigErRatePercent: 2.0,
     pagibigMaxMfs: PAGIBIG_MAX_FUND_SALARY.value,
     pagibigMaxEeContribution: PAGIBIG_MAX_EE_SHARE.value,
     pagibigMaxErContribution: PAGIBIG_MAX_ER_SHARE.value,
@@ -115,11 +131,14 @@ export function getPhRates(): PhRatesSummary {
 export interface KeRatesSummary {
   mpesaMaxDailyLimit: number;
   mpesaMaxSingleTxn: number;
+  mpesaMaxPerTxn: number;
   mpesaMaxBalance: number;
   exciseDutyRate: number;
   fulizaFreeHours: number;
   mshwariFeeRate: number;
+  mshwariRatePercent: number;
   mshwariTermDays: number;
+  mshwariDays: number;
   tariffBandsCount: number;
   fulizaBandsCount: number;
   verifiedYear: number;
@@ -130,11 +149,14 @@ export function getKeRates(): KeRatesSummary {
   return {
     mpesaMaxDailyLimit: MPESA_MAX_DAILY_LIMIT.value,
     mpesaMaxSingleTxn: MPESA_MAX_PER_TXN.value,
+    mpesaMaxPerTxn: MPESA_MAX_PER_TXN.value,
     mpesaMaxBalance: MPESA_MAX_BALANCE.value,
     exciseDutyRate: 15.0, // 15% Excise Duty on Mobile Money
     fulizaFreeHours: 72, // 3-day grace period
     mshwariFeeRate: MSHWARI_TOTAL_CHARGE_RATE.value,
+    mshwariRatePercent: MSHWARI_TOTAL_CHARGE_RATE.value,
     mshwariTermDays: MSHWARI_TERM_DAYS.value,
+    mshwariDays: MSHWARI_TERM_DAYS.value,
     tariffBandsCount: MPESA_TARIFF_BANDS.length,
     fulizaBandsCount: FULIZA_DAILY_BANDS.length,
     verifiedYear: 2026,
@@ -145,9 +167,11 @@ export function getKeRates(): KeRatesSummary {
 export interface UgRatesSummary {
   withdrawTaxRate: number;
   withdrawalTaxRate: number;
+  withdrawalTaxRatePercent: number;
   maxSingleTxn: number;
   momoMaxSingleTxn: number;
   maxDailyLimit: number;
+  momoMaxDailyLimit: number;
   maxBalance: number;
   momoMaxBalance: number;
   mtnBandsCount: number;
@@ -160,9 +184,11 @@ export function getUgRates(): UgRatesSummary {
   return {
     withdrawTaxRate: UG_WITHDRAWAL_TAX_RATE.value,
     withdrawalTaxRate: UG_WITHDRAWAL_TAX_RATE.value,
+    withdrawalTaxRatePercent: UG_WITHDRAWAL_TAX_RATE.value,
     maxSingleTxn: UG_MOMO_MAX_SINGLE_TXN.value,
     momoMaxSingleTxn: UG_MOMO_MAX_SINGLE_TXN.value,
     maxDailyLimit: 10000000,
+    momoMaxDailyLimit: 10000000,
     maxBalance: UG_MOMO_MAX_BALANCE.value,
     momoMaxBalance: UG_MOMO_MAX_BALANCE.value,
     mtnBandsCount: MTN_UG_TARIFF_BANDS.length,
@@ -175,14 +201,22 @@ export function getUgRates(): UgRatesSummary {
 export interface NgRatesSummary {
   nucMaxScale: number;
   nucFirstClassMin: number;
+  firstClassMin: number;
   nucSecondClassUpperMin: number;
+  secondUpperMin: number;
   nucSecondClassLowerMin: number;
+  secondLowerMin: number;
   nucThirdClassMin: number;
+  thirdClassMin: number;
   nbteMaxScale: number;
   nbteDistinctionMin: number;
+  distinctionMin: number;
   nbteUpperCreditMin: number;
+  upperCreditMin: number;
   nbteLowerCreditMin: number;
+  lowerCreditMin: number;
   nbtePassMin: number;
+  passMin: number;
   universityGradeScale: typeof NUC_STANDARD_GRADE_SCALE;
   polytechnicGradeScale: typeof NBTE_STANDARD_GRADE_SCALE;
   degreeClassifications: typeof NUC_DEGREE_CLASSIFICATIONS;
@@ -205,14 +239,22 @@ export function getNgRates(): NgRatesSummary {
   return {
     nucMaxScale: NUC_MAX_SCALE.value,
     nucFirstClassMin: firstClass,
+    firstClassMin: firstClass,
     nucSecondClassUpperMin: secondUpper,
+    secondUpperMin: secondUpper,
     nucSecondClassLowerMin: secondLower,
+    secondLowerMin: secondLower,
     nucThirdClassMin: thirdClass,
+    thirdClassMin: thirdClass,
     nbteMaxScale: NBTE_MAX_SCALE.value,
     nbteDistinctionMin: distinction,
+    distinctionMin: distinction,
     nbteUpperCreditMin: upperCredit,
+    upperCreditMin: upperCredit,
     nbteLowerCreditMin: lowerCredit,
+    lowerCreditMin: lowerCredit,
     nbtePassMin: pass,
+    passMin: pass,
     universityGradeScale: NUC_STANDARD_GRADE_SCALE,
     polytechnicGradeScale: NBTE_STANDARD_GRADE_SCALE,
     degreeClassifications: NUC_DEGREE_CLASSIFICATIONS,
@@ -221,3 +263,5 @@ export function getNgRates(): NgRatesSummary {
     verifiedDate: NUC_MAX_SCALE.verifiedOn,
   };
 }
+
+export const getNgGrading = getNgRates;

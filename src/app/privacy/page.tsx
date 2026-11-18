@@ -1,13 +1,6 @@
 import React from 'react';
-import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { siteConfig } from '@/config/site';
-
-export const metadata: Metadata = {
-  title: 'Privacy Policy — 100% Client-Side Privacy | Pay',
-  description:
-    'Privacy Policy for Pay. All calculations are performed entirely in your browser. No personal financial or academic data is ever sent to or stored on our servers.',
-};
 
 export default function PrivacyPolicyPage() {
   return (

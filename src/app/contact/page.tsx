@@ -1,14 +1,7 @@
 import React from 'react';
-import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { siteConfig } from '@/config/site';
-import { Mail, MessageSquare, AlertCircle } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: 'Contact Us & Report Rate Updates | Pay',
-  description:
-    'Contact the editorial team at Pay to submit official circular updates, report fee changes, or suggest improvements.',
-};
+import { Mail, AlertCircle } from 'lucide-react';
 
 export default function ContactPage() {
   return (

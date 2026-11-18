@@ -212,6 +212,82 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* Country FAQ Hubs & Knowledge Centers */}
+          <div className="rounded-xl border border-neutral-200 bg-white p-6 sm:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-200 pb-4 mb-6">
+              <div>
+                <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-brand" />
+                  <span>Official FAQs &amp; Statutory Knowledge Centers</span>
+                </h2>
+                <p className="mt-1 text-xs text-neutral-500">
+                  Direct answers to over 120 frequently asked questions on statutory contribution caps, tax exemption limits, and tariff calculations.
+                </p>
+              </div>
+              <Link href="/faq/" className="text-xs font-semibold text-brand-strong hover:underline shrink-0">
+                Browse Global FAQ &rarr;
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Link
+                href="/philippines/faq/"
+                className="group rounded-lg border border-neutral-200 p-4 hover:border-brand-strong hover:shadow-2xs transition-all"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">🇵🇭</span>
+                  <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong">Philippines FAQ</h3>
+                </div>
+                <p className="mt-2 text-xs text-neutral-600">
+                  SSS 15% rate, WISP caps, PhilHealth 5% split, Pag-IBIG ₱200 cap, and 13th month pay tax rules.
+                </p>
+                <div className="mt-3 text-xs font-semibold text-brand-strong">Read 30+ Q&amp;As &rarr;</div>
+              </Link>
+
+              <Link
+                href="/kenya/faq/"
+                className="group rounded-lg border border-neutral-200 p-4 hover:border-brand-strong hover:shadow-2xs transition-all"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">🇰🇪</span>
+                  <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong">Kenya FAQ</h3>
+                </div>
+                <p className="mt-2 text-xs text-neutral-600">
+                  M-PESA sending fees, agent vs ATM cashouts, Fuliza daily interest, and M-Shwari 30-day loans.
+                </p>
+                <div className="mt-3 text-xs font-semibold text-brand-strong">Read 25+ Q&amp;As &rarr;</div>
+              </Link>
+
+              <Link
+                href="/uganda/faq/"
+                className="group rounded-lg border border-neutral-200 p-4 hover:border-brand-strong hover:shadow-2xs transition-all"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">🇺🇬</span>
+                  <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong">Uganda FAQ</h3>
+                </div>
+                <p className="mt-2 text-xs text-neutral-600">
+                  MTN MoMo, Airtel Money tariffs, the statutory 0.5% URA withdrawal tax, and daily sending caps.
+                </p>
+                <div className="mt-3 text-xs font-semibold text-brand-strong">Read 25+ Q&amp;As &rarr;</div>
+              </Link>
+
+              <Link
+                href="/nigeria/faq/"
+                className="group rounded-lg border border-neutral-200 p-4 hover:border-brand-strong hover:shadow-2xs transition-all"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">🇳🇬</span>
+                  <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong">Nigeria FAQ</h3>
+                </div>
+                <p className="mt-2 text-xs text-neutral-600">
+                  NUC 5.0 degree classification, First Class and 2:1 cut-offs, polytechnic 4.0 scale, and carryovers.
+                </p>
+                <div className="mt-3 text-xs font-semibold text-brand-strong">Read 25+ Q&amp;As &rarr;</div>
+              </Link>
+            </div>
+          </div>
+
           {/* Value Props & Trust Badges */}
           <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-6 sm:p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -1,14 +1,7 @@
 import React from 'react';
-import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { siteConfig } from '@/config/site';
-import { ShieldCheck, Lock, Award, BookOpen } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: 'About Pay — Verification Standards & Primary Sources | Pay',
-  description:
-    'Learn about Pay’s primary-source verification standards, 100% browser-based computational privacy, and official government data sources.',
-};
+import { ShieldCheck, Lock } from 'lucide-react';
 
 export default function AboutPage() {
   return (
