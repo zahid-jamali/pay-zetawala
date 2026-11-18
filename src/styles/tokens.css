@@ -1,0 +1,97 @@
+/* Pay Design Tokens: Extracted from public/images/pay-logo.jpg */
+:root {
+  /* Brand */
+  --color-brand: #109068;
+  --color-brand-hover: #0d7957;
+  --color-brand-strong: #0b6649;
+  --color-brand-soft: #edf7f3;
+  --color-brand-subtle: #d6eee4;
+
+  /* Accent / Monogram Slate Navy */
+  --color-slate-navy: #283850;
+
+  /* Tinted Neutrals (tinted toward brand/slate) */
+  --color-neutral-50: #f8faf9;
+  --color-neutral-100: #f1f5f3;
+  --color-neutral-200: #e2e8e5;
+  --color-neutral-300: #cbd5d0;
+  --color-neutral-400: #94a39d;
+  --color-neutral-500: #64746e;
+  --color-neutral-600: #475550;
+  --color-neutral-700: #33413c;
+  --color-neutral-800: #1f2926;
+  --color-neutral-900: #111815;
+  --color-neutral-950: #080d0b;
+
+  /* Surface & Content Roles */
+  --bg-page: #ffffff;
+  --bg-surface: #f8faf9;
+  --bg-surface-raised: #ffffff;
+  --bg-muted: #f1f5f3;
+  --border-subtle: #e2e8e5;
+  --border-strong: #cbd5d0;
+  --text-primary: #111815;
+  --text-secondary: #475550;
+  --text-muted: #64746e;
+  --text-inverse: #ffffff;
+
+  /* Semantics (WCAG AA Compliant) */
+  --color-success-text: #166534;
+  --color-success-bg: #dcfce7;
+  --color-success-border: #86efac;
+
+  --color-warning-text: #854d0e;
+  --color-warning-bg: #fef9c3;
+  --color-warning-border: #fde047;
+
+  --color-danger-text: #991b1b;
+  --color-danger-bg: #fee2e2;
+  --color-danger-border: #fca5a5;
+
+  --color-info-text: #1e40af;
+  --color-info-bg: #dbeafe;
+  --color-info-border: #93c5fd;
+
+  /* Layout & Spacing */
+  --max-content-width: 1120px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-brand: #19a578;
+    --color-brand-hover: #1fb786;
+    --color-brand-strong: #40c497;
+    --color-brand-soft: #10261f;
+    --color-brand-subtle: #16362c;
+
+    --bg-page: #0d1210;
+    --bg-surface: #141c19;
+    --bg-surface-raised: #1a2420;
+    --bg-muted: #202c27;
+    --border-subtle: #293832;
+    --border-strong: #3b4e47;
+    --text-primary: #f1f5f3;
+    --text-secondary: #cbd5d0;
+    --text-muted: #94a39d;
+    --text-inverse: #080d0b;
+
+    --color-success-text: #86efac;
+    --color-success-bg: #052e16;
+    --color-success-border: #166534;
+
+    --color-warning-text: #fde047;
+    --color-warning-bg: #422006;
+    --color-warning-border: #854d0e;
+
+    --color-danger-text: #fca5a5;
+    --color-danger-bg: #450a0a;
+    --color-danger-border: #991b1b;
+
+    --color-info-text: #93c5fd;
+    --color-info-bg: #172554;
+    --color-info-border: #1e40af;
+  }
+}

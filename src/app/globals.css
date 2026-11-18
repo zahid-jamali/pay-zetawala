@@ -1,0 +1,69 @@
+@import '../styles/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: var(--font-ibm-plex-sans), system-ui, -apple-system, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-page);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Universal tabular figures for all data numbers and tables */
+  table,
+  input[type='number'],
+  input[type='text'],
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Accessible focus ring */
+  *:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+
+  /* Motion reduction respect */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Print Stylesheet */
+@media print {
+  header,
+  footer,
+  nav,
+  .no-print,
+  button:not(.print-include) {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-full-width {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
