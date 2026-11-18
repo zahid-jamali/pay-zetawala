@@ -6,12 +6,9 @@ import { PAGES, getPagesByCountry } from '@/config/pages';
 import { CountryNav } from '@/components/CountryNav';
 import { FaqAccordion } from '@/components/FaqAccordion';
 import { ShieldCheck, ArrowRight, Zap, Lock, BookOpen } from 'lucide-react';
+import { getPageMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = {
-  title: 'Pay — Free & Accurate Calculators for Philippines, Kenya, Uganda & Nigeria',
-  description:
-    'Free, verified salary deduction calculators, mobile money tariff finders, and university grade calculators. Up to date for 2026.',
-};
+export const metadata: Metadata = getPageMetadata('home');
 
 export default function HomePage() {
   const phTools = getPagesByCountry('ph').filter(p => p.type === 'tool').slice(0, 4);

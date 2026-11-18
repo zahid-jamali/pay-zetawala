@@ -779,7 +779,7 @@ export const PAGES: PageDef[] = [
     type: 'guide',
     title: 'Polytechnic Grading System Explained (NBTE) | Pay',
     shortTitle: 'NBTE Poly Grading',
-    description: 'Comprehensive guide to the NBTE 4.0 grading scale for National Diploma (ND) and Higher National Diploma (HND) programmes.',
+    description: 'Complete breakdown of the NBTE 4.0 grading scale for National Diploma (ND) and Higher National Diploma (HND) programmes.',
     category: 'Guide',
     priority: 0.75,
     updatedAt: '2026-11-18',

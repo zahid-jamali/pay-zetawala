@@ -114,7 +114,7 @@ export default function GuideHowToReadYourPayslip() {
           { name: 'How to Read Your Payslip', url: '/philippines/guides/how-to-read-your-payslip/' },
         ]}
         article={{
-          headline: 'How to Read Your Philippine Payslip (2026 Comprehensive Guide)',
+          headline: 'How to Read Your Philippine Payslip (2026 Line-by-Line Breakdown)',
           description: 'A line-by-line guide to understanding gross earnings, de minimis benefits, statutory deductions, taxable income, and net take-home pay.',
           url: 'https://pay.zetawala.com/philippines/guides/how-to-read-your-payslip/',
           datePublished: '2026-02-20T08:00:00+08:00',

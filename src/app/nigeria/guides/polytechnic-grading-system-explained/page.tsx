@@ -112,7 +112,7 @@ export default function GuidePolytechnicGradingSystemExplained() {
         ]}
         article={{
           headline: 'Polytechnic Grading System Explained: NBTE 4.0 Scale Guide (2026)',
-          description: 'A comprehensive guide to the NBTE 4.0 grading scale for National Diploma (ND) and Higher National Diploma (HND) programmes in Nigeria.',
+          description: 'A complete breakdown of the NBTE 4.0 grading scale for National Diploma (ND) and Higher National Diploma (HND) programmes in Nigeria.',
           url: 'https://pay.zetawala.com/nigeria/guides/polytechnic-grading-system-explained/',
           datePublished: '2026-03-30T08:00:00+01:00',
           dateModified: '2026-11-18T01:00:00+01:00',
