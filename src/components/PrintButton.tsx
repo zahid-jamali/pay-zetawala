@@ -1,0 +1,32 @@
+'use client';
+
+import React from 'react';
+import { Printer } from 'lucide-react';
+
+interface PrintButtonProps {
+  label?: string;
+  className?: string;
+}
+
+export const PrintButton: React.FC<PrintButtonProps> = ({
+  label = 'Print',
+  className = '',
+}) => {
+  const handlePrint = () => {
+    if (typeof window !== 'undefined') {
+      window.print();
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handlePrint}
+      className={`inline-flex items-center gap-1.5 rounded border border-neutral-300 bg-white px-2.5 py-1 text-xs font-medium text-neutral-700 shadow-sm hover:bg-neutral-50 focus-visible:outline-brand print:hidden ${className}`}
+      title="Print or Save as PDF"
+    >
+      <Printer className="h-3.5 w-3.5 text-neutral-500" />
+      <span>{label}</span>
+    </button>
+  );
+};
