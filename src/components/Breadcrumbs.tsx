@@ -38,11 +38,11 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <nav aria-label="Breadcrumb" className="mb-4">
-        <ol className="flex items-center gap-1.5 text-xs text-neutral-600 flex-wrap">
+        <ol className="flex items-center gap-1.5 text-xs text-slate-600 flex-wrap">
           <li className="flex items-center">
             <Link
               href="/"
-              className="flex items-center gap-1 text-neutral-600 hover:text-neutral-900 transition-colors"
+              className="flex items-center gap-1 text-slate-600 hover:text-emerald-700 transition-colors"
             >
               <Home className="h-3.5 w-3.5" />
               <span className="sr-only">Home</span>
@@ -53,15 +53,15 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
             const isLast = index === items.length - 1;
             return (
               <li key={index} className="flex items-center gap-1.5">
-                <ChevronRight className="h-3 w-3 text-neutral-400" />
+                <ChevronRight className="h-3 w-3 text-slate-400 shrink-0" aria-hidden="true" />
                 {isLast || !item.href ? (
-                  <span className="font-semibold text-neutral-900 truncate max-w-[200px] sm:max-w-none" aria-current="page">
+                  <span className="font-bold text-slate-900 truncate max-w-[200px] sm:max-w-none" aria-current="page">
                     {item.label}
                   </span>
                 ) : (
                   <Link
                     href={item.href}
-                    className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                    className="text-slate-600 hover:text-emerald-700 hover:underline transition-colors font-medium"
                   >
                     {item.label}
                   </Link>

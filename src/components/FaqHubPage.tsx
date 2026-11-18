@@ -67,26 +67,26 @@ export const FaqHubPage: React.FC<FaqHubPageProps> = ({
       <StructuredData breadcrumbs={breadcrumbs} faqs={jsonLdFaqs} />
 
       {/* Hero Header */}
-      <div className="border-b border-neutral-200 pb-8 pt-2">
-        <div className="inline-flex items-center gap-2 rounded-full bg-brand-soft/60 px-3 py-1 text-xs font-semibold text-brand-strong mb-3">
+      <div className="border-b border-slate-200 pb-8 pt-2">
+        <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200/80 px-3.5 py-1 text-xs font-bold text-emerald-800 mb-3 shadow-2xs">
           <span>{countryFlag}</span>
           <span>{countryName} Official Q&amp;A Hub</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900">
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
           {title}
         </h1>
-        <p className="mt-3 text-base text-neutral-600 leading-relaxed">
+        <p className="mt-3 text-base text-slate-700 leading-relaxed">
           {description}
         </p>
 
         {/* Verification badge */}
-        <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-neutral-500">
-          <div className="flex items-center gap-1.5 text-brand font-medium">
-            <ShieldCheck className="h-4 w-4" />
+        <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-slate-600">
+          <div className="flex items-center gap-1.5 text-emerald-800 font-semibold">
+            <ShieldCheck className="h-4 w-4 text-emerald-700" />
             <span>Verified from Official 2026 Gazettes &amp; Schedules</span>
           </div>
-          <div className="flex items-center gap-1">
-            <CalendarCheck className="h-3.5 w-3.5" />
+          <div className="flex items-center gap-1 text-slate-600 font-medium">
+            <CalendarCheck className="h-3.5 w-3.5 text-slate-500" />
             <span>Last audited: {ratesCheckedDate}</span>
           </div>
         </div>
@@ -94,9 +94,9 @@ export const FaqHubPage: React.FC<FaqHubPageProps> = ({
 
       {/* Category Quick Jump Bar */}
       {categories.length > 1 && (
-        <nav aria-label="Topic index" className="mt-6 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-700 mb-3">
-            <HelpCircle className="h-4 w-4 text-brand" />
+        <nav aria-label="Topic index" className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-xs">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-800 mb-3">
+            <HelpCircle className="h-4 w-4 text-emerald-700" />
             <span>Browse Questions by Topic</span>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -104,7 +104,7 @@ export const FaqHubPage: React.FC<FaqHubPageProps> = ({
               <a
                 key={cat.id}
                 href={`#${cat.id}`}
-                className="rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 hover:border-brand hover:text-brand-strong transition-colors"
+                className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:border-emerald-600 hover:text-emerald-700 hover:bg-emerald-50/50 transition-colors shadow-2xs"
               >
                 {cat.title} ({cat.items.length})
               </a>
@@ -117,24 +117,26 @@ export const FaqHubPage: React.FC<FaqHubPageProps> = ({
       <div className="mt-10 space-y-12">
         {categories.map((category) => (
           <section key={category.id} id={category.id} className="scroll-mt-24 space-y-4">
-            <div className="border-b border-neutral-200 pb-2">
-              <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-brand"></span>
+            <div className="border-b border-slate-200 pb-2.5">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-600 shrink-0"></span>
                 <span>{category.title}</span>
               </h2>
               {category.description && (
-                <p className="mt-1 text-xs text-neutral-500">{category.description}</p>
+                <p className="mt-1 text-xs sm:text-sm text-slate-600 leading-normal">{category.description}</p>
               )}
             </div>
 
-            <div className="divide-y divide-neutral-200 rounded-xl border border-neutral-200 bg-white">
+            <div className="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white shadow-xs overflow-hidden">
               {category.items.map((item, idx) => (
-                <article key={item.id || idx} className="p-5 sm:p-6 space-y-2">
-                  <h3 className="text-base sm:text-lg font-semibold text-neutral-900 flex items-start gap-2">
-                    <span className="text-brand font-bold text-sm mt-0.5">Q:</span>
+                <article key={item.id || idx} className="p-5 sm:p-6 space-y-2.5">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 flex items-start gap-2.5">
+                    <span className="inline-flex items-center justify-center rounded bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.5 text-emerald-800 font-bold text-xs mt-0.5 shrink-0">
+                      Q:
+                    </span>
                     <span>{item.question}</span>
                   </h3>
-                  <div className="pl-5 text-sm text-neutral-700 leading-relaxed space-y-2">
+                  <div className="pl-7 text-sm text-slate-700 leading-relaxed space-y-2 [&_strong]:text-slate-900 [&_strong]:font-semibold [&_a]:text-emerald-800 [&_a]:underline [&_a]:font-medium hover:[&_a]:text-emerald-900">
                     {typeof item.answer === 'string' ? (
                       <p>{item.answer}</p>
                     ) : (
@@ -150,9 +152,9 @@ export const FaqHubPage: React.FC<FaqHubPageProps> = ({
 
       {/* Related Tools Section */}
       {relatedTools && relatedTools.length > 0 && (
-        <section className="mt-14 border-t border-neutral-200 pt-8">
-          <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-neutral-800 mb-4">
-            <Calculator className="h-4 w-4 text-brand" />
+        <section className="mt-14 border-t border-slate-200 pt-8">
+          <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-slate-900 mb-4">
+            <Calculator className="h-4 w-4 text-emerald-700" />
             <span>Interactive Calculators for These Questions</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -160,15 +162,15 @@ export const FaqHubPage: React.FC<FaqHubPageProps> = ({
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="group rounded-xl border border-neutral-200 bg-white p-5 hover:border-brand hover:shadow-xs transition-all"
+                className="group rounded-xl border border-slate-200 bg-white p-5 hover:border-emerald-600 hover:shadow-xs transition-all"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-neutral-900 group-hover:text-brand-strong">
+                  <h3 className="font-bold text-slate-900 group-hover:text-emerald-800 transition-colors">
                     {tool.title}
                   </h3>
-                  <ArrowRight className="h-4 w-4 text-neutral-400 group-hover:text-brand group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all" />
                 </div>
-                <p className="mt-2 text-xs text-neutral-500 line-clamp-2">
+                <p className="mt-2 text-xs text-slate-600 leading-relaxed line-clamp-2">
                   {tool.description}
                 </p>
               </Link>
@@ -180,8 +182,8 @@ export const FaqHubPage: React.FC<FaqHubPageProps> = ({
       {/* Related Guides Section */}
       {relatedGuides && relatedGuides.length > 0 && (
         <section className="mt-8">
-          <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-neutral-800 mb-4">
-            <BookOpen className="h-4 w-4 text-brand" />
+          <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-slate-900 mb-4">
+            <BookOpen className="h-4 w-4 text-emerald-700" />
             <span>In-Depth Statutory Guides</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -189,15 +191,15 @@ export const FaqHubPage: React.FC<FaqHubPageProps> = ({
               <Link
                 key={guide.href}
                 href={guide.href}
-                className="group rounded-xl border border-neutral-200 bg-white p-5 hover:border-brand hover:shadow-xs transition-all"
+                className="group rounded-xl border border-slate-200 bg-white p-5 hover:border-emerald-600 hover:shadow-xs transition-all"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-neutral-900 group-hover:text-brand-strong">
+                  <h3 className="font-bold text-slate-900 group-hover:text-emerald-800 transition-colors">
                     {guide.title}
                   </h3>
-                  <ArrowRight className="h-4 w-4 text-neutral-400 group-hover:text-brand group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all" />
                 </div>
-                <p className="mt-2 text-xs text-neutral-500 line-clamp-2">
+                <p className="mt-2 text-xs text-slate-600 leading-relaxed line-clamp-2">
                   {guide.description}
                 </p>
               </Link>
@@ -208,33 +210,33 @@ export const FaqHubPage: React.FC<FaqHubPageProps> = ({
 
       {/* Official Sources & Verification Footer */}
       {sources && sources.length > 0 && (
-        <section className="mt-12 rounded-xl border border-neutral-200 bg-neutral-50 p-6 space-y-4">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-700">
-            <ShieldCheck className="h-4 w-4 text-brand" />
+        <section className="mt-12 rounded-xl border border-slate-200 bg-slate-50 p-6 space-y-4 shadow-xs">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900">
+            <ShieldCheck className="h-4 w-4 text-emerald-700" />
             <span>Official Regulatory References &amp; Circulars</span>
           </div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             {sources.map((src) => (
               <li key={src.url} className="flex items-start gap-1.5">
-                <ExternalLink className="h-3.5 w-3.5 text-neutral-400 shrink-0 mt-0.5" />
+                <ExternalLink className="h-3.5 w-3.5 text-slate-400 shrink-0 mt-0.5" />
                 <div>
                   <a
                     href={src.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-brand-strong hover:underline"
+                    className="font-semibold text-emerald-800 hover:text-emerald-900 hover:underline"
                   >
                     {src.title}
                   </a>
                   {src.authority && (
-                    <span className="block text-neutral-500">{src.authority}</span>
+                    <span className="block text-slate-600 font-medium">{src.authority}</span>
                   )}
                 </div>
               </li>
             ))}
           </ul>
-          <p className="text-xs text-neutral-500 border-t border-neutral-200 pt-3">
-            <strong>Editorial Disclaimer:</strong> Answers provided are compiled directly from published statutory regulations and verified fee schedules in force as of {ratesCheckedDate}. They serve as informational references and do not substitute for formal legal, accounting, or banking advice.
+          <p className="text-xs text-slate-600 border-t border-slate-200 pt-3 leading-relaxed">
+            <strong className="font-bold text-slate-800">Editorial Disclaimer:</strong> Answers provided are compiled directly from published statutory regulations and verified fee schedules in force as of {ratesCheckedDate}. They serve as informational references and do not substitute for formal legal, accounting, or banking advice.
           </p>
         </section>
       )}

@@ -12,6 +12,7 @@ export interface BreakdownRow {
   highlight?: boolean;
   sublabel?: string;
   isDeduction?: boolean;
+  isEarning?: boolean;
 }
 
 export interface CalculationLegalSource {
@@ -52,10 +53,10 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({
   const [sourcesOpen, setSourcesOpen] = useState(false);
 
   return (
-    <div className={`w-full rounded-xl border border-neutral-200 bg-white shadow-sm overflow-hidden ${className}`}>
+    <div className={`w-full rounded-xl border border-neutral-200 bg-white shadow-xs overflow-hidden ${className}`}>
       {/* Panel Header & Actions */}
-      <div className="flex items-center justify-between border-b border-neutral-200 bg-neutral-50/75 px-5 py-3">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-neutral-600">
+      <div className="flex items-center justify-between border-b border-neutral-200 bg-neutral-50 px-5 py-3">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-neutral-800">
           {title}
         </h2>
         <div className="flex items-center gap-1.5">
@@ -65,12 +66,12 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({
         </div>
       </div>
 
-      {/* Main Result Display */}
-      <div className="p-6 border-b border-neutral-200 bg-brand-soft/20">
-        <p className="text-xs font-semibold uppercase tracking-wider text-brand-strong">
+      {/* Main Result Headline Display */}
+      <div className="p-6 border-b border-neutral-200 bg-brand-soft/40">
+        <p className="text-xs font-bold uppercase tracking-wider text-brand-strong">
           {headlineLabel}
         </p>
-        <p className="mt-1 text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 tabular-nums">
+        <p className="mt-1 text-3xl sm:text-4xl font-black text-neutral-900 tabular-nums tracking-tight">
           {headlineValue}
         </p>
         {subHeadline && (
@@ -83,12 +84,12 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({
       {/* Callout Message (e.g. Grace Period notice, limit warning) */}
       {calloutMessage && (
         <div
-          className={`px-5 py-3 text-xs font-medium border-b border-neutral-200 ${
+          className={`px-5 py-3 text-xs font-semibold border-b ${
             calloutMessage.type === 'success'
-              ? 'bg-emerald-50 text-emerald-800'
+              ? 'bg-emerald-50 text-emerald-900 border-emerald-200'
               : calloutMessage.type === 'warning'
-              ? 'bg-amber-50 text-amber-800'
-              : 'bg-sky-50 text-sky-800'
+              ? 'bg-amber-50 text-amber-950 border-amber-300'
+              : 'bg-blue-50 text-blue-950 border-blue-200'
           }`}
         >
           {calloutMessage.text}
@@ -96,83 +97,92 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({
       )}
 
       {/* Breakdown Rows Table */}
-      <div className="divide-y divide-neutral-100">
-        {rows.map((row, idx) => (
-          <div
-            key={idx}
-            className={`flex items-center justify-between px-5 py-3 text-sm ${
-              row.highlight ? 'bg-neutral-50/80 font-bold' : ''
-            }`}
-          >
-            <div>
-              <span className={`text-neutral-800 ${row.highlight ? 'font-bold' : 'font-medium'}`}>
-                {row.label}
-              </span>
-              {row.sublabel && (
-                <span className="block text-[11px] text-neutral-500 font-normal">
-                  {row.sublabel}
+      <div className="divide-y divide-neutral-200/70">
+        {rows.map((row, idx) => {
+          const isEarning = row.isEarning || (typeof row.value === 'string' && row.value.trim().startsWith('+'));
+          return (
+            <div
+              key={idx}
+              className={`flex items-center justify-between px-5 py-3 text-sm transition-colors ${
+                row.highlight
+                  ? 'bg-brand-soft/30 font-bold border-l-4 border-brand'
+                  : idx % 2 === 1
+                  ? 'bg-neutral-50/60'
+                  : 'bg-white'
+              }`}
+            >
+              <div>
+                <span className={`text-neutral-800 ${row.highlight ? 'font-bold text-neutral-900' : 'font-medium'}`}>
+                  {row.label}
                 </span>
-              )}
+                {row.sublabel && (
+                  <span className="block text-[11px] text-neutral-600 font-medium mt-0.5">
+                    {row.sublabel}
+                  </span>
+                )}
+              </div>
+              <div className="text-right">
+                <span
+                  className={`tabular-nums ${
+                    row.isDeduction
+                      ? 'text-red-700 font-semibold'
+                      : isEarning
+                      ? 'text-emerald-700 font-semibold'
+                      : row.highlight
+                      ? 'text-neutral-900 font-black text-base'
+                      : 'text-neutral-900 font-semibold'
+                  }`}
+                >
+                  {typeof row.value === 'number'
+                    ? row.value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                    : row.value}
+                </span>
+              </div>
             </div>
-            <div className="text-right">
-              <span
-                className={`tabular-nums ${
-                  row.isDeduction
-                    ? 'text-danger font-semibold'
-                    : row.highlight
-                    ? 'text-brand-strong font-bold text-base'
-                    : 'text-neutral-900 font-semibold'
-                }`}
-              >
-                {typeof row.value === 'number'
-                  ? row.value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                  : row.value}
-              </span>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Expandable "How this was calculated" section */}
       {sources && sources.length > 0 && (
-        <div className="border-t border-neutral-200 bg-neutral-50/60 p-4">
+        <div className="border-t border-neutral-200 bg-neutral-50/80 p-4">
           <button
             type="button"
             onClick={() => setSourcesOpen(!sourcesOpen)}
-            className="flex w-full items-center justify-between text-xs font-semibold text-neutral-700 hover:text-neutral-950 focus-visible:outline-brand"
+            className="flex w-full items-center justify-between text-xs font-bold text-neutral-800 hover:text-neutral-950 focus-visible:outline-brand"
             aria-expanded={sourcesOpen}
           >
             <div className="flex items-center gap-1.5">
-              <ShieldCheck className="h-4 w-4 text-brand" />
+              <ShieldCheck className="h-4 w-4 text-brand-strong" />
               <span>How this was calculated (Legal Sources)</span>
             </div>
             {sourcesOpen ? (
-              <ChevronUp className="h-4 w-4 text-neutral-500" />
+              <ChevronUp className="h-4 w-4 text-neutral-600" />
             ) : (
-              <ChevronDown className="h-4 w-4 text-neutral-500" />
+              <ChevronDown className="h-4 w-4 text-neutral-600" />
             )}
           </button>
 
           {sourcesOpen && (
-            <div className="mt-3 space-y-3 pt-3 border-t border-neutral-200 text-xs text-neutral-600">
+            <div className="mt-3 space-y-2.5 pt-3 border-t border-neutral-200 text-xs text-neutral-700">
               {sources.map((src, i) => (
-                <div key={i} className="rounded-md bg-white p-2.5 border border-neutral-200 shadow-2xs">
+                <div key={i} className="rounded-lg bg-white p-3 border border-neutral-200 shadow-2xs">
                   <div className="flex items-start justify-between gap-2">
-                    <span className="font-semibold text-neutral-900">{src.title}</span>
+                    <span className="font-bold text-neutral-900">{src.title}</span>
                     {src.url && (
                       <a
                         href={src.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-brand-strong hover:underline inline-flex items-center gap-1 text-[11px] shrink-0"
+                        className="text-brand-strong hover:text-brand-hover font-semibold hover:underline inline-flex items-center gap-1 text-[11px] shrink-0"
                       >
                         <span>Official doc</span>
                         <ExternalLink className="h-3 w-3" />
                       </a>
                     )}
                   </div>
-                  <p className="text-[11px] text-neutral-500 mt-0.5">{src.documentNumber}</p>
-                  <p className="mt-1 text-neutral-700">{src.summary}</p>
+                  <p className="text-[11px] text-neutral-600 font-medium mt-0.5">{src.documentNumber}</p>
+                  <p className="mt-1 text-neutral-700 leading-relaxed">{src.summary}</p>
                 </div>
               ))}
             </div>

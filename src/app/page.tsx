@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
-import { PAGES, getPagesByCountry } from '@/config/pages';
+import { getPagesByCountry } from '@/config/pages';
 import { CountryNav } from '@/components/CountryNav';
 import { FaqAccordion } from '@/components/FaqAccordion';
 import { ShieldCheck, ArrowRight, Zap, Lock, BookOpen } from 'lucide-react';
@@ -39,17 +39,17 @@ export default function HomePage() {
       <CountryNav />
 
       {/* Hero Section */}
-      <section className="border-b border-neutral-200 bg-linear-to-b from-white to-neutral-50/50 py-12 sm:py-16">
+      <section className="border-b border-neutral-200 bg-gradient-to-b from-white to-neutral-50/60 py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-3 py-1 text-xs font-semibold text-brand-strong mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand-soft px-3 py-1 text-xs font-semibold text-brand-strong mb-4">
               <ShieldCheck className="h-3.5 w-3.5 text-brand" />
               <span>Verified Legal Rates for 2026</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-neutral-900 leading-[1.15]">
-              Calm, accurate financial & grading calculators.
+              Calm, accurate financial &amp; grading calculators.
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-neutral-600 leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-neutral-700 leading-relaxed">
               Compute your exact take-home pay, mobile money transfer fees, and university grade points. Free, fast, and verified against official primary sources.
             </p>
           </div>
@@ -60,26 +60,26 @@ export default function HomePage() {
               <Link
                 key={country.code}
                 href={country.path}
-                className="group relative flex flex-col justify-between rounded-xl border border-neutral-200 bg-white p-5 shadow-2xs hover:border-brand-strong hover:shadow-md transition-all"
+                className="group relative flex flex-col justify-between rounded-xl border border-neutral-200 bg-white p-5 shadow-2xs hover:border-brand hover:shadow-md transition-all"
               >
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="text-2xl">{country.flag}</span>
-                    <span className="text-xs font-bold text-neutral-500 uppercase tracking-wider">
+                    <span className="text-xs font-bold text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded tracking-wide">
                       {country.currency}
                     </span>
                   </div>
                   <h2 className="mt-3 text-lg font-bold text-neutral-900 group-hover:text-brand-strong transition-colors">
                     {country.name}
                   </h2>
-                  <p className="mt-1 text-xs text-neutral-600">
+                  <p className="mt-1.5 text-xs text-neutral-600 leading-relaxed">
                     {country.code === 'ph' && 'Salary, SSS, PhilHealth, Pag-IBIG & Tax'}
                     {country.code === 'ke' && 'M-PESA tariffs, Fuliza & M-Shwari'}
                     {country.code === 'ug' && 'MTN MoMo, Airtel Money & 0.5% Tax'}
                     {country.code === 'ng' && 'University (5.0) & Poly (4.0) CGPA'}
                   </p>
                 </div>
-                <div className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-brand-strong">
+                <div className="mt-5 flex items-center gap-1.5 text-xs font-bold text-brand-strong">
                   <span>Browse calculators</span>
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -98,11 +98,11 @@ export default function HomePage() {
               <div className="flex items-center gap-2.5">
                 <span className="text-2xl">🇵🇭</span>
                 <div>
-                  <h2 className="text-xl font-bold text-neutral-900">Philippines Payroll & Contributions</h2>
-                  <p className="text-xs text-neutral-500">In force 2026: SSS 15% rate, PhilHealth 5%, Pag-IBIG ₱200 cap, TRAIN Law</p>
+                  <h2 className="text-xl font-bold text-neutral-900">Philippines Payroll &amp; Contributions</h2>
+                  <p className="text-xs text-neutral-600">In force 2026: SSS 15% rate, PhilHealth 5%, Pag-IBIG ₱200 cap, TRAIN Law</p>
                 </div>
               </div>
-              <Link href="/philippines/" className="text-xs font-semibold text-brand-strong hover:underline flex items-center gap-1">
+              <Link href="/philippines/" className="text-xs font-bold text-brand-strong hover:underline flex items-center gap-1">
                 <span>View all PH tools</span>
                 <ArrowRight className="h-3 w-3" />
               </Link>
@@ -112,13 +112,16 @@ export default function HomePage() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="rounded-lg border border-neutral-200 bg-white p-4 shadow-2xs hover:border-brand-strong hover:shadow-xs transition-all flex flex-col justify-between"
+                  className="rounded-lg border border-neutral-200 bg-white p-4 shadow-2xs hover:border-brand-strong hover:shadow-xs transition-all flex flex-col justify-between group"
                 >
                   <div>
-                    <h3 className="font-bold text-sm text-neutral-900 hover:text-brand-strong">{tool.shortTitle}</h3>
-                    <p className="mt-1 text-xs text-neutral-600 line-clamp-2">{tool.description}</p>
+                    <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong transition-colors">{tool.shortTitle}</h3>
+                    <p className="mt-1 text-xs text-neutral-600 line-clamp-2 leading-relaxed">{tool.description}</p>
                   </div>
-                  <div className="mt-3 text-xs font-semibold text-brand-strong">Calculate &rarr;</div>
+                  <div className="mt-3 text-xs font-bold text-brand-strong flex items-center gap-1">
+                    <span>Calculate</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -130,11 +133,11 @@ export default function HomePage() {
               <div className="flex items-center gap-2.5">
                 <span className="text-2xl">🇰🇪</span>
                 <div>
-                  <h2 className="text-xl font-bold text-neutral-900">Kenya Safaricom M-PESA & Credit</h2>
-                  <p className="text-xs text-neutral-500">Official tariffs inclusive of 15% excise duty under Finance Act</p>
+                  <h2 className="text-xl font-bold text-neutral-900">Kenya Safaricom M-PESA &amp; Credit</h2>
+                  <p className="text-xs text-neutral-600">Official tariffs inclusive of 15% excise duty under Finance Act</p>
                 </div>
               </div>
-              <Link href="/kenya/" className="text-xs font-semibold text-brand-strong hover:underline flex items-center gap-1">
+              <Link href="/kenya/" className="text-xs font-bold text-brand-strong hover:underline flex items-center gap-1">
                 <span>View all KE tools</span>
                 <ArrowRight className="h-3 w-3" />
               </Link>
@@ -144,13 +147,16 @@ export default function HomePage() {
                 <Link
                   key={tool.id}
                   href={tool.path}
-                  className="rounded-lg border border-neutral-200 bg-white p-4 shadow-2xs hover:border-brand-strong hover:shadow-xs transition-all flex flex-col justify-between"
+                  className="rounded-lg border border-neutral-200 bg-white p-4 shadow-2xs hover:border-brand-strong hover:shadow-xs transition-all flex flex-col justify-between group"
                 >
                   <div>
-                    <h3 className="font-bold text-sm text-neutral-900 hover:text-brand-strong">{tool.shortTitle}</h3>
-                    <p className="mt-1 text-xs text-neutral-600 line-clamp-2">{tool.description}</p>
+                    <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong transition-colors">{tool.shortTitle}</h3>
+                    <p className="mt-1 text-xs text-neutral-600 line-clamp-2 leading-relaxed">{tool.description}</p>
                   </div>
-                  <div className="mt-3 text-xs font-semibold text-brand-strong">Calculate &rarr;</div>
+                  <div className="mt-3 text-xs font-bold text-brand-strong flex items-center gap-1">
+                    <span>Calculate</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -165,7 +171,7 @@ export default function HomePage() {
                   <span className="text-xl">🇺🇬</span>
                   <h2 className="text-lg font-bold text-neutral-900">Uganda Mobile Money</h2>
                 </div>
-                <Link href="/uganda/" className="text-xs font-semibold text-brand-strong hover:underline">
+                <Link href="/uganda/" className="text-xs font-bold text-brand-strong hover:underline">
                   All Uganda tools &rarr;
                 </Link>
               </div>
@@ -174,10 +180,13 @@ export default function HomePage() {
                   <Link
                     key={tool.id}
                     href={tool.path}
-                    className="block rounded-lg border border-neutral-200 bg-white p-3.5 shadow-2xs hover:border-brand-strong transition-all"
+                    className="block rounded-lg border border-neutral-200 bg-white p-3.5 shadow-2xs hover:border-brand-strong hover:shadow-xs transition-all group"
                   >
-                    <h3 className="font-bold text-sm text-neutral-900">{tool.shortTitle}</h3>
-                    <p className="mt-1 text-xs text-neutral-600">{tool.description}</p>
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong transition-colors">{tool.shortTitle}</h3>
+                      <ArrowRight className="h-3.5 w-3.5 text-brand-strong group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    </div>
+                    <p className="mt-1 text-xs text-neutral-600 leading-relaxed">{tool.description}</p>
                   </Link>
                 ))}
               </div>
@@ -190,7 +199,7 @@ export default function HomePage() {
                   <span className="text-xl">🇳🇬</span>
                   <h2 className="text-lg font-bold text-neutral-900">Nigeria CGPA Grading</h2>
                 </div>
-                <Link href="/nigeria/" className="text-xs font-semibold text-brand-strong hover:underline">
+                <Link href="/nigeria/" className="text-xs font-bold text-brand-strong hover:underline">
                   All Nigeria tools &rarr;
                 </Link>
               </div>
@@ -199,10 +208,13 @@ export default function HomePage() {
                   <Link
                     key={tool.id}
                     href={tool.path}
-                    className="block rounded-lg border border-neutral-200 bg-white p-3.5 shadow-2xs hover:border-brand-strong transition-all"
+                    className="block rounded-lg border border-neutral-200 bg-white p-3.5 shadow-2xs hover:border-brand-strong hover:shadow-xs transition-all group"
                   >
-                    <h3 className="font-bold text-sm text-neutral-900">{tool.shortTitle}</h3>
-                    <p className="mt-1 text-xs text-neutral-600">{tool.description}</p>
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong transition-colors">{tool.shortTitle}</h3>
+                      <ArrowRight className="h-3.5 w-3.5 text-brand-strong group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    </div>
+                    <p className="mt-1 text-xs text-neutral-600 leading-relaxed">{tool.description}</p>
                   </Link>
                 ))}
               </div>
@@ -210,77 +222,98 @@ export default function HomePage() {
           </div>
 
           {/* Country FAQ Hubs & Knowledge Centers */}
-          <div className="rounded-xl border border-neutral-200 bg-white p-6 sm:p-8">
+          <div className="rounded-xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-2xs">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-200 pb-4 mb-6">
               <div>
                 <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
                   <BookOpen className="h-5 w-5 text-brand" />
                   <span>Official FAQs &amp; Statutory Knowledge Centers</span>
                 </h2>
-                <p className="mt-1 text-xs text-neutral-500">
+                <p className="mt-1 text-xs text-neutral-600">
                   Direct answers to over 120 frequently asked questions on statutory contribution caps, tax exemption limits, and tariff calculations.
                 </p>
               </div>
-              <Link href="/faq/" className="text-xs font-semibold text-brand-strong hover:underline shrink-0">
-                Browse Global FAQ &rarr;
+              <Link href="/faq/" className="text-xs font-bold text-brand-strong hover:underline shrink-0 flex items-center gap-1">
+                <span>Browse Global FAQ</span>
+                <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <Link
                 href="/philippines/faq/"
-                className="group rounded-lg border border-neutral-200 p-4 hover:border-brand-strong hover:shadow-2xs transition-all"
+                className="group rounded-lg border border-neutral-200 bg-white p-4 hover:border-brand hover:shadow-xs transition-all flex flex-col justify-between"
               >
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🇵🇭</span>
-                  <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong">Philippines FAQ</h3>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">🇵🇭</span>
+                    <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong transition-colors">Philippines FAQ</h3>
+                  </div>
+                  <p className="mt-2 text-xs text-neutral-600 leading-relaxed">
+                    SSS 15% rate, WISP caps, PhilHealth 5% split, Pag-IBIG ₱200 cap, and 13th month pay tax rules.
+                  </p>
                 </div>
-                <p className="mt-2 text-xs text-neutral-600">
-                  SSS 15% rate, WISP caps, PhilHealth 5% split, Pag-IBIG ₱200 cap, and 13th month pay tax rules.
-                </p>
-                <div className="mt-3 text-xs font-semibold text-brand-strong">Read 30+ Q&amp;As &rarr;</div>
+                <div className="mt-3 text-xs font-bold text-brand-strong flex items-center gap-1">
+                  <span>Read 30+ Q&amp;As</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </div>
               </Link>
 
               <Link
                 href="/kenya/faq/"
-                className="group rounded-lg border border-neutral-200 p-4 hover:border-brand-strong hover:shadow-2xs transition-all"
+                className="group rounded-lg border border-neutral-200 bg-white p-4 hover:border-brand hover:shadow-xs transition-all flex flex-col justify-between"
               >
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🇰🇪</span>
-                  <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong">Kenya FAQ</h3>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">🇰🇪</span>
+                    <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong transition-colors">Kenya FAQ</h3>
+                  </div>
+                  <p className="mt-2 text-xs text-neutral-600 leading-relaxed">
+                    M-PESA sending fees, agent vs ATM cashouts, Fuliza daily interest, and M-Shwari 30-day loans.
+                  </p>
                 </div>
-                <p className="mt-2 text-xs text-neutral-600">
-                  M-PESA sending fees, agent vs ATM cashouts, Fuliza daily interest, and M-Shwari 30-day loans.
-                </p>
-                <div className="mt-3 text-xs font-semibold text-brand-strong">Read 25+ Q&amp;As &rarr;</div>
+                <div className="mt-3 text-xs font-bold text-brand-strong flex items-center gap-1">
+                  <span>Read 25+ Q&amp;As</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </div>
               </Link>
 
               <Link
                 href="/uganda/faq/"
-                className="group rounded-lg border border-neutral-200 p-4 hover:border-brand-strong hover:shadow-2xs transition-all"
+                className="group rounded-lg border border-neutral-200 bg-white p-4 hover:border-brand hover:shadow-xs transition-all flex flex-col justify-between"
               >
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🇺🇬</span>
-                  <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong">Uganda FAQ</h3>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">🇺🇬</span>
+                    <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong transition-colors">Uganda FAQ</h3>
+                  </div>
+                  <p className="mt-2 text-xs text-neutral-600 leading-relaxed">
+                    MTN MoMo, Airtel Money tariffs, the statutory 0.5% URA withdrawal tax, and daily sending caps.
+                  </p>
                 </div>
-                <p className="mt-2 text-xs text-neutral-600">
-                  MTN MoMo, Airtel Money tariffs, the statutory 0.5% URA withdrawal tax, and daily sending caps.
-                </p>
-                <div className="mt-3 text-xs font-semibold text-brand-strong">Read 25+ Q&amp;As &rarr;</div>
+                <div className="mt-3 text-xs font-bold text-brand-strong flex items-center gap-1">
+                  <span>Read 25+ Q&amp;As</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </div>
               </Link>
 
               <Link
                 href="/nigeria/faq/"
-                className="group rounded-lg border border-neutral-200 p-4 hover:border-brand-strong hover:shadow-2xs transition-all"
+                className="group rounded-lg border border-neutral-200 bg-white p-4 hover:border-brand hover:shadow-xs transition-all flex flex-col justify-between"
               >
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🇳🇬</span>
-                  <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong">Nigeria FAQ</h3>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">🇳🇬</span>
+                    <h3 className="font-bold text-sm text-neutral-900 group-hover:text-brand-strong transition-colors">Nigeria FAQ</h3>
+                  </div>
+                  <p className="mt-2 text-xs text-neutral-600 leading-relaxed">
+                    NUC 5.0 degree classification, First Class and 2:1 cut-offs, polytechnic 4.0 scale, and carryovers.
+                  </p>
                 </div>
-                <p className="mt-2 text-xs text-neutral-600">
-                  NUC 5.0 degree classification, First Class and 2:1 cut-offs, polytechnic 4.0 scale, and carryovers.
-                </p>
-                <div className="mt-3 text-xs font-semibold text-brand-strong">Read 25+ Q&amp;As &rarr;</div>
+                <div className="mt-3 text-xs font-bold text-brand-strong flex items-center gap-1">
+                  <span>Read 25+ Q&amp;As</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </div>
               </Link>
             </div>
           </div>
@@ -292,7 +325,7 @@ export default function HomePage() {
                 <ShieldCheck className="h-5 w-5 text-brand shrink-0 mt-0.5" />
                 <div>
                   <h3 className="text-sm font-bold text-neutral-900">Primary Official Sources</h3>
-                  <p className="mt-1 text-xs text-neutral-600">
+                  <p className="mt-1 text-xs text-neutral-700 leading-relaxed">
                     No recycled blog numbers. Every rate is transcribed directly from primary agency circulars and audited against test vectors.
                   </p>
                 </div>
@@ -301,7 +334,7 @@ export default function HomePage() {
                 <Lock className="h-5 w-5 text-brand shrink-0 mt-0.5" />
                 <div>
                   <h3 className="text-sm font-bold text-neutral-900">100% Client-Side Privacy</h3>
-                  <p className="mt-1 text-xs text-neutral-600">
+                  <p className="mt-1 text-xs text-neutral-700 leading-relaxed">
                     Calculations run locally in your browser. No personal payroll, loan, or academic records leave your machine.
                   </p>
                 </div>
@@ -309,8 +342,8 @@ export default function HomePage() {
               <div className="flex items-start gap-3">
                 <Zap className="h-5 w-5 text-brand shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="text-sm font-bold text-neutral-900">Instant & Offline-Ready</h3>
-                  <p className="mt-1 text-xs text-neutral-600">
+                  <h3 className="text-sm font-bold text-neutral-900">Instant &amp; Offline-Ready</h3>
+                  <p className="mt-1 text-xs text-neutral-700 leading-relaxed">
                     Lightweight static pages optimized for mobile connections. No bloated scripts, no popups, no delay.
                   </p>
                 </div>

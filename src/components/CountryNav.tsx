@@ -9,9 +9,9 @@ export const CountryNav: React.FC = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-full border-b border-neutral-200 bg-neutral-50/50 py-2.5">
+    <div className="w-full border-b border-slate-200 bg-slate-50/70 py-2.5">
       <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 sm:px-6 overflow-x-auto no-scrollbar">
-        <span className="text-xs font-semibold text-neutral-500 uppercase tracking-wider shrink-0 mr-2">
+        <span className="text-xs font-bold text-slate-700 uppercase tracking-wider shrink-0 mr-2">
           Country Hubs:
         </span>
         {siteConfig.supportedCountries.map(c => {
@@ -20,10 +20,10 @@ export const CountryNav: React.FC = () => {
             <Link
               key={c.code}
               href={c.path}
-              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition-all shrink-0 ${
+              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition-all shrink-0 shadow-xs ${
                 isActive
-                  ? 'bg-neutral-900 text-white shadow-2xs'
-                  : 'bg-white border border-neutral-200 text-neutral-700 hover:border-neutral-300 hover:bg-neutral-100'
+                  ? 'bg-slate-900 text-white border border-slate-900 shadow-xs'
+                  : 'bg-white border border-slate-200 text-slate-700 hover:border-emerald-600 hover:text-emerald-700 hover:bg-emerald-50/40'
               }`}
             >
               <span>{c.flag}</span>

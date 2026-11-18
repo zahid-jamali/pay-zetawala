@@ -38,13 +38,13 @@ export const CopyResultButton: React.FC<CopyResultButtonProps> = ({
     <button
       type="button"
       onClick={handleCopy}
-      className={`inline-flex items-center gap-1.5 rounded border border-neutral-300 bg-white px-2.5 py-1 text-xs font-medium text-neutral-700 shadow-sm hover:bg-neutral-50 focus-visible:outline-brand ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-xs font-semibold text-neutral-700 shadow-2xs hover:text-neutral-900 hover:border-neutral-300 hover:bg-neutral-50 focus-visible:outline-brand transition-colors ${className}`}
       title="Copy calculation summary"
     >
       {copied ? (
         <>
           <Check className="h-3.5 w-3.5 text-brand-strong" />
-          <span className="text-brand-strong font-semibold">Copied!</span>
+          <span className="text-brand-strong font-bold">Copied!</span>
         </>
       ) : (
         <>
