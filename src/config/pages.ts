@@ -88,7 +88,7 @@ export const PAGES: PageDef[] = [
   {
     id: 'privacy',
     country: 'global',
-    path: '/privacy-policy/',
+    path: '/privacy/',
     type: 'site',
     title: 'Privacy Policy — Zero Data Storage | Pay',
     shortTitle: 'Privacy',
