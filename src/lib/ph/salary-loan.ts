@@ -21,6 +21,7 @@ export interface AmortizationScheduleRow {
   principal: number;
   interest: number;
   endingBalance: number;
+  balance?: number;
 }
 
 export interface SssSalaryLoanResult {
@@ -38,8 +39,10 @@ export interface SssSalaryLoanResult {
   termMonths: number;
   monthlyAmortization: number;
   totalRepayment: number;
+  totalRepayable?: number;
   totalInterest: number;
   schedule: AmortizationScheduleRow[];
+  amortizationSchedule?: AmortizationScheduleRow[];
 }
 
 /**
@@ -166,7 +169,9 @@ export function calculateSssSalaryLoan(inputs: SssSalaryLoanInputs): SssSalaryLo
     termMonths,
     monthlyAmortization,
     totalRepayment: Math.round(totalRepayment * 100) / 100,
+    totalRepayable: Math.round(totalRepayment * 100) / 100,
     totalInterest: Math.round(totalInterest * 100) / 100,
     schedule,
+    amortizationSchedule: schedule,
   };
 }

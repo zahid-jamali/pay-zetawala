@@ -16,6 +16,7 @@ interface BracketTableProps<T> {
   columns: ColumnDef<T>[];
   data: T[];
   highlightRowPredicate?: (row: T) => boolean;
+  isHighlighted?: (row: T) => boolean;
   searchPredicate?: (row: T, term: string) => boolean;
   searchPlaceholder?: string;
 }
@@ -26,10 +27,12 @@ export function BracketTable<T>({
   columns,
   data,
   highlightRowPredicate,
+  isHighlighted: isHighlightedProp,
   searchPredicate,
   searchPlaceholder = 'Search amount or salary...',
 }: BracketTableProps<T>) {
   const [searchTerm, setSearchTerm] = useState('');
+  const activeHighlightPredicate = highlightRowPredicate || isHighlightedProp;
 
   const filteredData = searchPredicate && searchTerm.trim() !== ''
     ? data.filter(item => searchPredicate(item, searchTerm.toLowerCase().trim()))
@@ -84,7 +87,7 @@ export function BracketTable<T>({
               </tr>
             ) : (
               filteredData.map((row, rowIdx) => {
-                const isHighlighted = highlightRowPredicate ? highlightRowPredicate(row) : false;
+                const isHighlighted = activeHighlightPredicate ? activeHighlightPredicate(row) : false;
                 return (
                   <tr
                     key={rowIdx}

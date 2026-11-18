@@ -4,7 +4,7 @@ import React from 'react';
 
 interface NumberInputProps {
   id?: string;
-  label: string;
+  label?: string;
   value: number;
   onChange: (val: number) => void;
   suffix?: string;
@@ -31,7 +31,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   placeholder = '0',
   required = false,
 }) => {
-  const inputId = id || `number-input-${label.toLowerCase().replace(/\s+/g, '-')}`;
+  const inputId = id || (label ? `number-input-${label.toLowerCase().replace(/\s+/g, '-')}` : `number-input-${Math.random().toString(36).substring(2, 7)}`);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = parseFloat(e.target.value);
@@ -44,10 +44,12 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 
   return (
     <div className="w-full">
-      <label htmlFor={inputId} className="block text-sm font-semibold text-neutral-800 mb-1">
-        {label}
-        {required && <span className="text-danger ml-1">*</span>}
-      </label>
+      {label && (
+        <label htmlFor={inputId} className="block text-sm font-semibold text-neutral-800 mb-1">
+          {label}
+          {required && <span className="text-danger ml-1">*</span>}
+        </label>
+      )}
 
       <div className="relative mt-1 rounded-md shadow-sm">
         <input

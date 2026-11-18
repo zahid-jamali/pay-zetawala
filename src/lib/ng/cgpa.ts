@@ -39,6 +39,7 @@ export interface SemesterResult {
 export interface CgpaResult {
   system: GradingSystem;
   semesters: SemesterResult[];
+  semesterResults?: SemesterResult[];
   totalUnits: number;
   totalQualityPoints: number;
   cgpa: number;
@@ -209,6 +210,7 @@ export function calculateCgpa(
   return {
     system,
     semesters: processedSemesters,
+    semesterResults: processedSemesters,
     totalUnits: cumulativeUnits,
     totalQualityPoints: Math.round(cumulativeQP * 100) / 100,
     cgpa: roundedCgpa,
